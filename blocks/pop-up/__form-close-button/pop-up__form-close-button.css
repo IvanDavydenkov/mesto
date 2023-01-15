@@ -6,7 +6,5 @@
 @media screen and (max-width: 650px) {
   .pop-up__form-close-button {
     width: 22px;
-    top: -35px;
-    right: -1px;
   }
 }

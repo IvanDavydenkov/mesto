@@ -11,8 +11,6 @@ function handleFormSubmit(evt) {
   evt.preventDefault();
   let name = nameInput.value;
   let job = jobInput.value;
-  nameInput.value = profileTitle.textContent;
-  jobInput.value = profileSubtitle.textContent;
   profileTitle.textContent = name;
   profileSubtitle.textContent = job;
   toggleForm();
@@ -20,6 +18,8 @@ function handleFormSubmit(evt) {
 formElement.addEventListener("submit", handleFormSubmit);
 function toggleForm() {
   popUp.classList.toggle("pop-up_opened");
+  nameInput.value = profileTitle.textContent;
+  jobInput.value = profileSubtitle.textContent;
 }
 editButton.addEventListener("click", toggleForm);
 closeFormButton.addEventListener("click", toggleForm);
