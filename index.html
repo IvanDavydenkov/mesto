@@ -22,21 +22,23 @@
         <div class="profile__profile-info">
           <div class="profile__container">
             <h2 class="profile__title">Жак-Ив Кусто</h2>
-            <img
-              src="./images/profile__edit-button.svg"
-              alt="Кнопка редактирования профиля"
-              class="profile__edit-button"
-            />
+            <button type="button" class="profile__edit-button">
+              <img
+                src="./images/profile__edit-button.svg"
+                alt="Кнопка редактирования профиля"
+                class="profile__edit-button-icon"
+              />
+            </button>
           </div>
           <p class="profile__subtitle">Исследователь океана</p>
         </div>
-        <div class="profile__add-button-box">
+        <button type="button" class="profile__add-button-box">
           <img
             src="./images/profile__add-button.svg"
             alt="Кнопка  добавления фото"
             class="profile__add-button"
           />
-        </div>
+        </button>
       </section>
       <section class="elements">
         <ul class="elements-list">
@@ -48,15 +50,7 @@
             />
             <div class="elements-list__title-box">
               <h3 class="elements-list__title">Карачаевск</h3>
-              <input
-                type="checkbox"
-                class="elements-list__like"
-                id="elements-list__like"
-              />
-              <label
-                for="elements-list__like"
-                class="elements-list__like-label"
-              ></label>
+              <button type="button" class="elements-list__like"></button>
             </div>
           </li>
           <li class="elements-list__element">
@@ -67,15 +61,7 @@
             />
             <div class="elements-list__title-box">
               <h3 class="elements-list__title">Гора Эльбрус</h3>
-              <input
-                type="checkbox"
-                class="elements-list__like"
-                id="elements-list__like2"
-              />
-              <label
-                for="elements-list__like2"
-                class="elements-list__like-label"
-              ></label>
+              <button type="button" class="elements-list__like"></button>
             </div>
           </li>
           <li class="elements-list__element">
@@ -86,15 +72,7 @@
             />
             <div class="elements-list__title-box">
               <h3 class="elements-list__title">Домбай</h3>
-              <input
-                type="checkbox"
-                class="elements-list__like"
-                id="elements-list__like3"
-              />
-              <label
-                for="elements-list__like3"
-                class="elements-list__like-label"
-              ></label>
+              <button type="button" class="elements-list__like"></button>
             </div>
           </li>
           <li class="elements-list__element">
@@ -105,15 +83,7 @@
             />
             <div class="elements-list__title-box">
               <h3 class="elements-list__title">Гора Эльбрус</h3>
-              <input
-                type="checkbox"
-                class="elements-list__like"
-                id="elements-list__like4"
-              />
-              <label
-                for="elements-list__like4"
-                class="elements-list__like-label"
-              ></label>
+              <button type="button" class="elements-list__like"></button>
             </div>
           </li>
           <li class="elements-list__element">
@@ -124,15 +94,7 @@
             />
             <div class="elements-list__title-box">
               <h3 class="elements-list__title">Домбай</h3>
-              <input
-                type="checkbox"
-                class="elements-list__like"
-                id="elements-list__like5"
-              />
-              <label
-                for="elements-list__like5"
-                class="elements-list__like-label"
-              ></label>
+              <button type="button" class="elements-list__like"></button>
             </div>
           </li>
           <li class="elements-list__element">
@@ -145,15 +107,7 @@
               <h3 class="elements-list__title">
                 Карачаево-Черкесская Республика
               </h3>
-              <input
-                type="checkbox"
-                class="elements-list__like"
-                id="elements-list__like6"
-              />
-              <label
-                for="elements-list__like6"
-                class="elements-list__like-label"
-              ></label>
+              <button type="button" class="elements-list__like"></button>
             </div>
           </li>
         </ul>
@@ -161,30 +115,34 @@
       <div class="pop-up">
         <div class="pop-up__container">
           <h2 class="pop-up__title">Редактировать профиль</h2>
-          <form action="#" class="pop-up__form">
+          <form action="#" class="pop-up__form" name="edit-form">
             <input
               type="text"
-              class="pop-up__input pop-up__input-title"
+              class="pop-up__input-title"
               placeholder="Жак-Ив Кусто"
+              name="edit-form"
             />
             <input
               type="text"
-              class="pop-up__input pop-up__input-subtitle"
+              class="pop-up__input-subtitle"
               placeholder="Исследователь океана"
+              name="edit-form"
             />
             <button class="pop-up__save-button">Сохранить</button>
           </form>
-          <img
+          <button class="pop-up__form-close-button-box">
+            <img
             src="./images/pop-up__form-close-button.svg"
             alt="Кнопка закрыть форму"
             class="pop-up__form-close-button"
           />
         </div>
+          </button>
       </div>
     </main>
     <footer class="footer">
-      <span class="footer__copyright">© 2020 Mesto Russia</span>
+      <p class="footer__copyright">© 2020 Mesto Russia</p>
     </footer>
-    <script src="./scripts/form.js" defer></script>
+    <script src="./scripts/index.js" defer></script>
   </body>
 </html>

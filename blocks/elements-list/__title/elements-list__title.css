@@ -1,6 +1,5 @@
 .elements-list__title {
   margin: 0;
-  font-family: "Inter";
   font-style: normal;
   font-weight: 900;
   font-size: 24px;
@@ -8,4 +7,5 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  max-width: 190px;
 }

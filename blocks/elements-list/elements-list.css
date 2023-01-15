@@ -1,5 +1,6 @@
 .elements-list {
   padding: 0;
+  margin: 0;
   display: grid;
   grid-template-columns: repeat(3, max-content);
   gap: 20px 18px;

@@ -1,18 +1,10 @@
-.pop-up__input {
+.pop-up__input-subtitle {
   border: none;
   min-height: 30px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
-}
-
-.pop-up__input:first-child {
-  margin-bottom: 24px;
-}
-
-.pop-up__input:nth-child(2n) {
-  margin-bottom: 48px;
+  margin-bottom: 45px;
 }

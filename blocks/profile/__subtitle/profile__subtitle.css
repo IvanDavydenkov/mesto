@@ -1,11 +1,13 @@
 .profile__subtitle {
   margin-top: 0;
   color: white;
-  font-family: "Inter";
-  font-style: normal;
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 400px;
 }
 
 @media screen and (max-width: 767px) {
@@ -14,6 +16,7 @@
     margin-left: auto;
     font-size: 14px;
     line-height: 17px;
+    max-width: 200px;
   }
 }
 
