@@ -1,27 +1,27 @@
 .elements-list__like {
-    display: none;
+  display: none;
 }
 
 .elements-list__like-label::before {
-    content: '';
-    display: block;
-    width: 22px;
-    height: 22px;
-    background-image: url(../../../images/element-list__like_disabled.svg);
-    background-repeat: no-repeat;
-    position: relative;
-    top: 7px;
-    transition: all .1s ease;
+  content: "";
+  display: block;
+  width: 22px;
+  height: 22px;
+  background-image: url(../../../images/element-list__like_disabled.svg);
+  background-repeat: no-repeat;
+  position: relative;
+  top: 7px;
+  transition: all 0.1s ease;
 }
 
-.elements-list__like:hover+.elements-list__like-label::before {
-    background-image: url(../../../images/element-list__like_hover.svg);
-    transform: scale(1.2);
-    cursor: pointer;
+.elements-list__like:hover + .elements-list__like-label::before {
+  background-image: url(../../../images/element-list__like_hover.svg);
+  transform: scale(1.2);
+  cursor: pointer;
 }
 
-.elements-list__like:checked+.elements-list__like-label::before {
-    background-image: url(../../../images/element-list__like_active.svg);
+.elements-list__like:checked + .elements-list__like-label::before {
+  background-image: url(../../../images/element-list__like_active.svg);
 }
 
 /* .elements-list__like:checked:hover+.elements-list__like-label::before {

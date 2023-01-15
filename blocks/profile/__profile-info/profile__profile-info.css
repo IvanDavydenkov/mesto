@@ -1,10 +1,8 @@
 .profile__profile-info {
   margin-top: 20px;
-  margin-left: 30px;
+  display: flex;
+  flex-direction: column;
   margin-right: auto;
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-  gap: 8px 23px;
 }
 
 @media screen and (max-width: 767px) {
@@ -12,16 +10,9 @@
     display: flex;
     flex-wrap: wrap;
     max-width: 350px;
-    margin-right: auto;
     margin-left: auto;
     justify-content: center;
-    gap: 0;
     margin-top: 28px;
-  }
-}
-
-@media screen and (max-width: 350px) {
-  .profile__profile-info {
-    margin-left: 25px;
+    flex-direction: column;
   }
 }

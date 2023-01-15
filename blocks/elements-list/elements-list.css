@@ -12,9 +12,10 @@
   }
 }
 
-
 @media screen and (max-width: 650px) {
   .elements-list {
-    grid-template-columns: repeat(1, max-content);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
