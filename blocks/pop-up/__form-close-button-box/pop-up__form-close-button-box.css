@@ -6,3 +6,8 @@
   background-color: transparent;
   border: none;
 }
+@media screen and (max-width: 650px) {
+  .pop-up__form-close-button-box {
+    right: -7px;
+  }
+}
