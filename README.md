@@ -5,7 +5,7 @@ https://ivandavydenkov.github.io/mesto/
 * Figma
 * Картинки
 
-**Используемыми в проекте техниками и технологиями**
+**Используемые в проекте техниками и технологиями**
 
 - JavaScript
 - querySelector
