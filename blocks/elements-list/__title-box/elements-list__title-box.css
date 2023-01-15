@@ -1,7 +1,7 @@
 .elements-list__title-box {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 25px;
-    margin-left: 21px;
-    margin-right: 21px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+  margin-left: 21px;
+  margin-right: 21px;
 }

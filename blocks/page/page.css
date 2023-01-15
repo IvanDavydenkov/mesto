@@ -1,6 +1,7 @@
 .page {
   max-width: 1280px;
-  min-width: 320px;
+  /* Из-за  того что интернет экспловер min-width  = 300 */
+  min-width: 300px;
   background-color: #000;
   margin-right: auto;
   margin-left: auto;
