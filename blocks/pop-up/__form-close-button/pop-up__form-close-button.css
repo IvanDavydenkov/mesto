@@ -1,9 +1,3 @@
-.pop-up__form-close-button {
-  position: absolute;
-  top: -40px;
-  right: -40px;
-}
-
 .pop-up__form-close-button:hover {
   cursor: pointer;
   opacity: 0.6;

@@ -1,0 +1,8 @@
+.pop-up__form-close-button-box {
+  box-sizing: border-box;
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  background-color: transparent;
+  border: none;
+}
