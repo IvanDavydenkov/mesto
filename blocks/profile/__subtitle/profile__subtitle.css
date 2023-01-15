@@ -7,3 +7,19 @@
   font-size: 18px;
   line-height: 22px;
 }
+
+@media screen and (max-width: 767px) {
+  .profile__subtitle {
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .profile__subtitle {
+    margin-top: 5px;
+    margin-left: 56px;
+  }
+}

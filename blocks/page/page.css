@@ -4,4 +4,6 @@
   background-color: #000;
   margin-right: auto;
   margin-left: auto;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  text-rendering: optimizeLegibility;
 }
