@@ -16,10 +16,14 @@ function handleFormSubmit(evt) {
   toggleForm();
 }
 formElement.addEventListener("submit", handleFormSubmit);
-function toggleForm() {
-  popUp.classList.toggle("pop-up_opened");
+function openForm() {
+  popUp.classList.add("pop-up_opened");
+
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileSubtitle.textContent;
 }
-editButton.addEventListener("click", toggleForm);
-closeFormButton.addEventListener("click", toggleForm);
+function closeForm() {
+  popUp.classList.remove("pop-up_opened");
+}
+editButton.addEventListener("click", openForm);
+closeFormButton.addEventListener("click", closeForm);
