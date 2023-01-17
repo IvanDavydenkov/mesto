@@ -13,7 +13,7 @@ function handleFormSubmit(evt) {
   let job = jobInput.value;
   profileTitle.textContent = name;
   profileSubtitle.textContent = job;
-  toggleForm();
+  closeForm();
 }
 formElement.addEventListener("submit", handleFormSubmit);
 function openForm() {
