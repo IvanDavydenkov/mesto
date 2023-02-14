@@ -4,6 +4,6 @@
   width: 282px;
   height: 282px;
 }
-.elements-list__photo  {
+.elements-list__photo:hover  {
   cursor: pointer;
 }
