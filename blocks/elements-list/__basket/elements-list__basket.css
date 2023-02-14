@@ -1,0 +1,11 @@
+.elements-list__basket {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    
+}
+
+.elements-list__basket:hover {
+    cursor: pointer;
+    opacity: .7;
+}
