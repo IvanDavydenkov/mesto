@@ -64,5 +64,5 @@ function savePhoto(form) {
 
     addPhoto(newPhoto)
     closeForm(form)
-    return false  // event  submit ожидает событие булевого типа ; true - то страничка перезагрузится при событии, если  получит false - стандартное поведение  браузера отменится.
+    return false  // event  submit ожидает значение булевого типа ; true - то страничка перезагрузится при событии, если  получит false - стандартное поведение  браузера отменится.
 }
