@@ -32,7 +32,7 @@
           </div>
           <p class="profile__subtitle">Исследователь океана</p>
         </div>
-        <button type="button" class="profile__add-button-box" onclick="openFormAddPhoto('add-form')">
+        <button type="button" class="profile__add-button-box" onclick="openPopUp('add-form')">
           <img
             src="./images/profile__add-button.svg"
             alt="Кнопка  добавления фото"
@@ -46,7 +46,7 @@
       </section>
       <template id="photo-card">
           <li class="elements-list__element">
-            <img src="#" alt="фото" class="elements-list__photo" onclick="viewPhoto(this)">
+            <img src="#" alt="фото" class="elements-list__photo" onclick="viewPhoto(this,'view-photo')">
             <div class="elements-list__title-box">
               <h3 class="elements-list__title"></h3>
               <button type="button" class="elements-list__like"></button>
@@ -130,6 +130,7 @@
     <footer class="footer">
       <p class="footer__copyright">© 2020 Mesto Russia</p>
     </footer>
+    <script src="./scripts/cards.js" defer></script>
     <script src="./scripts/index.js" defer></script>
   </body>
 </html>

@@ -1,63 +1,34 @@
+const profileName = document.querySelector('.profile__title')
+const profileJob = document.querySelector('.profile__subtitle')
+const photoCardTemplate = document.querySelector('#photo-card').content
+const photoCardList = document.querySelector('.elements-list')
+
+function openPopUp (formId) {
+    const popUp = document.getElementById(formId)
+    popUp.classList.add('pop-up_opened') 
+    return popUp  // возвращаю  переменную popUp чтобы в дальнейшем функции в которые будет вложена  данная  функция имели  возможность  обратиться к нему
+}
 function openFormEditProfile(formId) {
-    let popUp = document.getElementById(formId)
-    const popUpForm = popUp.querySelector('form')
-    popUp.classList.add('pop-up_opened')
-    const profileName = document.querySelector('.profile__title')
-    const profileJob = document.querySelector('.profile__subtitle')
+    openPopUp(formId)
+    const popUpForm = openPopUp(formId).querySelector('form')
     popUpForm.elements['name'].value = profileName.textContent
     popUpForm.elements['job'].value = profileJob.textContent
-
+    
 }
-function openFormAddPhoto(formId) {
-    const popUp = document.getElementById(formId)
-    popUp.classList.add('pop-up_opened')
 
-}
 function closeForm(element) {
-    let popUp = element.closest('.pop-up')
+    const popUp = element.closest('.pop-up')
     popUp.classList.remove('pop-up_opened')
 }
 function saveProfile(form) {
-    const profileName = document.querySelector('.profile__title')
-    const profileJob = document.querySelector('.profile__subtitle')
     profileName.textContent = form.elements['name'].value
     profileJob.textContent = form.elements['job'].value
     closeForm(form)
     return false
 }
 
-
-const initialCards = [
-    {
-        name: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-        name: 'Челябинская область',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-        name: 'Иваново',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-        name: 'Камчатка',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-        name: 'Холмогорский район',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-        name: 'Байкал',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-];
-
-function addPhoto(item, to_start = false) {
-    const photoCardTemplate = document.querySelector('#photo-card').content
+function addPhoto(item) {
     const photoCardElement = photoCardTemplate.querySelector('.elements-list__element').cloneNode(true)
-    const photoCardList = document.querySelector('.elements-list')
     photoCardElement.querySelector('.elements-list__photo').src = item.link
     photoCardElement.querySelector('.elements-list__photo').alt = item.name
     photoCardElement.querySelector('.elements-list__title').textContent = item.name
@@ -69,35 +40,29 @@ function addPhoto(item, to_start = false) {
         const eventTarget = e.target
         eventTarget.classList.toggle('elements-list__like_active')
     })
-    if (to_start)
         photoCardList.prepend(photoCardElement)
-    else
-        photoCardList.append(photoCardElement)
 
 }
 initialCards.forEach(function (item) {
     addPhoto(item)
 })
-function viewPhoto (photo) {
-    let photoItem = document.getElementById('view-photo')
-    photoItem.querySelector('.pop-up__image').src  = photo.src
-    photoItem.querySelector('.pop-up__caption').textContent = photo.alt
-    photoItem.classList.add('pop-up_opened')
+function viewPhoto (photo, formId) {
+    openPopUp(formId)
+    openPopUp(formId).querySelector('.pop-up__image').src =  photo.src
+    openPopUp(formId).querySelector('.pop-up__caption').textContent = photo.alt
 }
 
 
+
 function savePhoto(form) {
-    console.log(form)
-    let photoName = form.elements['photo-location'].value
-    let photoLink = form.elements['photo-link'].value
-    initialCards.unshift(
-        {
-            name: photoName,
-            link: photoLink
-        }
-    )
-    console.log(initialCards)
-    addPhoto(initialCards[0], true)
+    const photoName = form.elements['photo-location'].value
+    const photoLink = form.elements['photo-link'].value
+    const newPhoto = {
+        name: photoName,
+        link: photoLink
+    }
+
+    addPhoto(newPhoto)
     closeForm(form)
-    return false
+    return false  // event  submit ожидает событие булевого типа ; true - то страничка перезагрузится при событии, если  получит false - стандартное поведение  браузера отменится.
 }
