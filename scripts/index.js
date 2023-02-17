@@ -85,7 +85,7 @@ function makePhotoCards (item)  {
     return photoCardElement
 }
 
-function  addPhoto(link, name , to_start = false) {
+function  addPhoto(link, name) {
     const photoCardElement = photoCardTemplate.querySelector('.elements-list__element').cloneNode(true)
     photoCardElement.querySelector('.elements-list__photo').src = link
     photoCardElement.querySelector('.elements-list__photo').alt = name
@@ -104,9 +104,7 @@ function  addPhoto(link, name , to_start = false) {
         viewURL.src = eventTarget.src
         openPopUp(popUpView)
     })
-    if(to_start){
-        photoCardList.prepend(photoCardElement)
-    } else photoCardList.append(photoCardElement)
+     photoCardList.append(photoCardElement)
 
 }
 initialCards.forEach(function (item){
