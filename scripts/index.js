@@ -2,67 +2,90 @@ const profileName = document.querySelector('.profile__title')
 const profileJob = document.querySelector('.profile__subtitle')
 const photoCardTemplate = document.querySelector('#photo-card').content
 const photoCardList = document.querySelector('.elements-list')
+const buttonEditForm =  document.querySelector('.profile__edit-button')
+const buttonAdd = document.querySelector('.profile__add-button-box')
+const popUpEditForm =  document.querySelector('#profile-form')
+const popUpAddForm  = document.querySelector('#add-form')
+const popUpView = document.querySelector('#view-photo')
+const profileNameInput =  popUpEditForm.querySelector('.pop-up__input-title')
+const profileJobInput =  popUpEditForm.querySelector('.pop-up__input-subtitle')
+const viewPhotoName = popUpView.querySelector('.pop-up__caption')
+const viewURL = popUpView.querySelector('.pop-up__image')
+const photoNameInput = popUpAddForm.querySelector('.pop-up__input-title')
+const photoURLinput =  popUpAddForm.querySelector('.pop-up__input-subtitle')
+const buttonCloseForm = popUpEditForm.querySelector('.pop-up__form-close-button-box')
+const buttonCloseFormPhoto = popUpAddForm.querySelector('.pop-up__form-close-button-box')
+const buttonCloseFormViewScreen = popUpView.querySelector('.pop-up__form-close-button-box')
+const buttonSaveProfile  =  popUpEditForm.querySelector('.pop-up__save-button') 
+const buttonAddPhoto = popUpAddForm.querySelector('.pop-up__save-button')
+function openPopUp (item) {
+    item.classList.add('pop-up_opened') 
+}
+function closeForm(item) {
+    item.classList.remove('pop-up_opened')
+}
+function saveProfile(evt) {
+    evt.preventDefault();
+    profileName.textContent = profileNameInput.value
+    profileJob.textContent = profileJobInput.value
+}
+buttonEditForm.addEventListener('click', ()=>{
+    profileNameInput.value = profileName.textContent
+    profileJobInput.value = profileJob.textContent
+    openPopUp(popUpEditForm)
+})
 
-function openPopUp (formId) {
-    const popUp = document.getElementById(formId)
-    popUp.classList.add('pop-up_opened') 
-    return popUp  // возвращаю  переменную popUp чтобы в дальнейшем функции в которые будет вложена  данная  функция имели  возможность  обратиться к нему
-}
-function openFormEditProfile(formId) {
-    openPopUp(formId)
-    const popUpForm = openPopUp(formId).querySelector('form')
-    popUpForm.elements['name'].value = profileName.textContent
-    popUpForm.elements['job'].value = profileJob.textContent
-    
-}
+buttonCloseForm.addEventListener('click', () => {
+    closeForm(popUpEditForm)
+})
 
-function closeForm(element) {
-    const popUp = element.closest('.pop-up')
-    popUp.classList.remove('pop-up_opened')
-}
-function saveProfile(form) {
-    profileName.textContent = form.elements['name'].value
-    profileJob.textContent = form.elements['job'].value
-    closeForm(form)
-    return false
-}
+buttonSaveProfile.addEventListener('click', (evt) =>{
+    saveProfile(evt)
+    closeForm(popUpEditForm)
+})
 
-function addPhoto(item) {
+buttonAdd.addEventListener('click', ()=> {
+    photoNameInput.value = ''
+    photoURLinput.value = ''
+    openPopUp(popUpAddForm)
+})
+
+buttonCloseFormPhoto.addEventListener('click', () => {
+    closeForm(popUpAddForm)
+})
+
+buttonAddPhoto.addEventListener('click', (evt)=>{
+    evt.preventDefault();
+    addPhoto(photoNameInput.value,  photoURLinput.value)
+    closeForm(popUpAddForm)
+})
+
+buttonCloseFormViewScreen.addEventListener('click', ()=>  {
+    closeForm(popUpView)
+})
+function addPhoto (name, url)  {
     const photoCardElement = photoCardTemplate.querySelector('.elements-list__element').cloneNode(true)
-    photoCardElement.querySelector('.elements-list__photo').src = item.link
-    photoCardElement.querySelector('.elements-list__photo').alt = item.name
-    photoCardElement.querySelector('.elements-list__title').textContent = item.name
+    photoCardElement.querySelector('.elements-list__photo').src = url
+    photoCardElement.querySelector('.elements-list__photo').alt = name
+    photoCardElement.querySelector('.elements-list__title').textContent = name
     photoCardElement.querySelector('.elements-list__basket').addEventListener('click', function (e) {
         const eventTarget = e.target
-        eventTarget.closest('.elements-list__element').style.display = 'none'
+        eventTarget.closest('.elements-list__element').remove()
     })
     photoCardElement.querySelector('.elements-list__like').addEventListener('click', function (e) {
         const eventTarget = e.target
         eventTarget.classList.toggle('elements-list__like_active')
     })
-        photoCardList.prepend(photoCardElement)
-
+    photoCardElement.querySelector('.elements-list__photo').addEventListener('click', (e)=> {
+        const eventTarget = e.target
+        viewPhotoName.textContent = eventTarget.alt
+        viewURL.src = eventTarget.src
+        openPopUp(popUpView)
+    })
+    photoCardList.prepend(photoCardElement)
 }
-initialCards.forEach(function (item) {
-    addPhoto(item)
+
+
+initialCards.forEach(function (item){
+    addPhoto(item.name, item.link)
 })
-function viewPhoto (photo, formId) {
-    openPopUp(formId)
-    openPopUp(formId).querySelector('.pop-up__image').src =  photo.src
-    openPopUp(formId).querySelector('.pop-up__caption').textContent = photo.alt
-}
-
-
-
-function savePhoto(form) {
-    const photoName = form.elements['photo-location'].value
-    const photoLink = form.elements['photo-link'].value
-    const newPhoto = {
-        name: photoName,
-        link: photoLink
-    }
-
-    addPhoto(newPhoto)
-    closeForm(form)
-    return false  // event  submit ожидает значение булевого типа ; true - то страничка перезагрузится при событии, если  получит false - стандартное поведение  браузера отменится.
-}

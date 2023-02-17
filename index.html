@@ -22,7 +22,7 @@
         <div class="profile__profile-info">
           <div class="profile__container">
             <h2 class="profile__title">Жак-Ив Кусто</h2>
-            <button type="button" onclick="openFormEditProfile('profile-form')" class="profile__edit-button">
+            <button type="button" class="profile__edit-button">
               <img
                 src="./images/profile__edit-button.svg"
                 alt="Кнопка редактирования профиля"
@@ -32,7 +32,7 @@
           </div>
           <p class="profile__subtitle">Исследователь океана</p>
         </div>
-        <button type="button" class="profile__add-button-box" onclick="openPopUp('add-form')">
+        <button type="button" class="profile__add-button-box">
           <img
             src="./images/profile__add-button.svg"
             alt="Кнопка  добавления фото"
@@ -44,88 +44,87 @@
         <ul class="elements-list">
         </ul>
       </section>
-      <template id="photo-card">
-          <li class="elements-list__element">
-            <img src="#" alt="фото" class="elements-list__photo" onclick="viewPhoto(this,'view-photo')">
-            <div class="elements-list__title-box">
-              <h3 class="elements-list__title"></h3>
-              <button type="button" class="elements-list__like"></button>
-            </div>
-            <img src="./images/element-list__basket.svg" alt="удалить" class="elements-list__basket">
-          </li>
-      </template>
-      <div class="pop-up" id="profile-form">
-        <div class="pop-up__container">
-          <h2 class="pop-up__title">Редактировать профиль</h2>
-          <form action="#" class="pop-up__form" name="edit-form" onsubmit="return saveProfile(this)">
-            <input
-              type="text"
-              class="pop-up__input-title"
-              placeholder="Жак-Ив Кусто"
-              name="name"
-            />
-            <input
-              type="text"
-              class="pop-up__input-subtitle"
-              placeholder="Исследователь океана"
-              name="job"
-            />
-            <button class="pop-up__save-button">Сохранить</button>
-          </form>
-          <button class="pop-up__form-close-button-box" onclick="closeForm(this)">
-            <img
-              src="./images/pop-up__form-close-button.svg"
-              alt="Кнопка закрыть форму"
-              class="pop-up__form-close-button"
-            />
-          </button>
-        </div>
-      </div>
-      <div class="pop-up"  id="add-form">
-        <div class="pop-up__container">
-          <h2 class="pop-up__title">Новое место</h2>
-          <form action="#" class="pop-up__form" name="edit-form" onsubmit="return savePhoto(this)">
-            <input
-              type="text"
-              class="pop-up__input-title"
-              placeholder="Название"
-              name="photo-location"
-            />
-            <input
-              type="text"
-              class="pop-up__input-subtitle"
-              placeholder="Ссылка на картинку"
-              name="photo-link"
-            />
-            <button class="pop-up__save-button">Сохранить</button>
-          </form>
-          <button class="pop-up__form-close-button-box" onclick='closeForm(this)'>
-            <img
-              src="./images/pop-up__form-close-button.svg"
-              alt="Кнопка закрыть форму"
-              class="pop-up__form-close-button"
-            />
-          </button>
-        </div>
-      </div>
     </main>
-    <div class="pop-up"  id="view-photo">
-      <!-- Я  переиспользовал код с прошлой 3ей  практической работы -->
-        <figure class="pop-up__figure">
+    <template id="photo-card">
+        <li class="elements-list__element">
+          <img src="#" alt="фото" class="elements-list__photo">
+          <div class="elements-list__title-box">
+            <h3 class="elements-list__title"></h3>
+            <button type="button" class="elements-list__like"></button>
+          </div>
+          <img src="./images/element-list__basket.svg" alt="удалить" class="elements-list__basket">
+        </li>
+    </template>
+    <div class="pop-up" id="profile-form">
+      <div class="pop-up__container">
+        <h2 class="pop-up__title">Редактировать профиль</h2>
+        <form action="#" class="pop-up__form" name="edit-form">
+          <input
+            type="text"
+            class="pop-up__input-title"
+            placeholder="Жак-Ив Кусто"
+            name="name"
+            />
+            <input
+            type="text"
+            class="pop-up__input-subtitle"
+            placeholder="Исследователь океана"
+            name="job"
+            />
+            <button class="pop-up__save-button" id='save-profile-edit-form'>Сохранить</button>
+          </form>
+        <button class="pop-up__form-close-button-box">
           <img
-            src="https://images.unsplash.com/photo-1675186883824-a14b5c5d8da2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-            alt="#"
-            class="pop-up__image"
-          />
-          <figcaption class="pop-up__caption">ваша полка — верхняя</figcaption>
-          <button class="pop-up__form-close-button-box" onclick='closeForm(this)'>
-            <img
-              src="./images/pop-up__form-close-button.svg"
-              alt="Кнопка закрыть форму"
-              class="pop-up__form-close-button"
+          src="./images/pop-up__form-close-button.svg"
+            alt="Кнопка закрыть форму"
+            class="pop-up__form-close-button"
             />
           </button>
-        </figure>
+      </div>
+    </div>
+    <div class="pop-up" id="add-form">
+      <div class="pop-up__container">
+        <h2 class="pop-up__title">Новое место</h2>
+        <form action="#" class="pop-up__form" name="edit-form">
+          <input
+          type="text"
+          class="pop-up__input-title"
+          placeholder="Название"
+          name="photo-location"
+          />
+          <input
+          type="text"
+          class="pop-up__input-subtitle"
+          placeholder="Ссылка на картинку"
+          name="photo-link"
+          />
+          <button class="pop-up__save-button">Сохранить</button>
+        </form>
+        <button class="pop-up__form-close-button-box">
+          <img
+          src="./images/pop-up__form-close-button.svg"
+          alt="Кнопка закрыть форму"
+          class="pop-up__form-close-button"
+          />
+        </button>
+      </div>
+    </div>
+    <div class="pop-up"  id="view-photo">
+      <figure class="pop-up__figure">
+        <img
+        src="https://images.unsplash.com/photo-1675186883824-a14b5c5d8da2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+        alt="#"
+        class="pop-up__image"
+        />
+        <figcaption class="pop-up__caption">ваша полка — верхняя</figcaption>
+        <button class="pop-up__form-close-button-box">
+          <img
+          src="./images/pop-up__form-close-button.svg"
+          alt="Кнопка закрыть форму"
+          class="pop-up__form-close-button"
+          />
+        </button>
+      </figure>
     </div>
     <footer class="footer">
       <p class="footer__copyright">© 2020 Mesto Russia</p>
