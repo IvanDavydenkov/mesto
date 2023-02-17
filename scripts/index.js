@@ -56,7 +56,7 @@ buttonCloseFormPhoto.addEventListener('click', () => {
 
 buttonAddPhoto.addEventListener('click', (evt)=>{
     evt.preventDefault();
-    addPhoto()
+    addPhoto(photoNameInput.value, photoURLinput.value)
     closeForm(popUpAddForm)
 })
 
@@ -85,26 +85,12 @@ function makePhotoCards (item)  {
     return photoCardElement
 }
 
-function  addPhoto() {
-    const photoCardElement = photoCardTemplate.querySelector('.elements-list__element').cloneNode(true)
-    photoCardElement.querySelector('.elements-list__photo').src = photoURLinput.value
-    photoCardElement.querySelector('.elements-list__photo').alt = photoNameInput.value
-    photoCardElement.querySelector('.elements-list__title').textContent = photoNameInput.value
-    photoCardElement.querySelector('.elements-list__basket').addEventListener('click', function (e) {
-        const eventTarget = e.target
-        eventTarget.closest('.elements-list__element').remove()
-    })
-    photoCardElement.querySelector('.elements-list__like').addEventListener('click', function (e) {
-        const eventTarget = e.target
-        eventTarget.classList.toggle('elements-list__like_active')
-    })
-    photoCardElement.querySelector('.elements-list__photo').addEventListener('click', (e)=> {
-        const eventTarget = e.target
-        viewPhotoName.textContent = eventTarget.alt
-        viewURL.src = eventTarget.src
-        openPopUp(popUpView)
-    })
-    photoCardList.prepend(photoCardElement)
+function  addPhoto(name, link) {
+    const  item = {
+        name: name,
+        link:  link,
+    }
+    photoCardList.prepend(makePhotoCards(item))
 }
 initialCards.forEach(function (item){
     photoCardList.prepend(makePhotoCards(item))
