@@ -63,9 +63,31 @@ buttonAddPhoto.addEventListener('click', (evt)=>{
 buttonCloseFormViewScreen.addEventListener('click', ()=>  {
     closeForm(popUpView)
 })
-function addPhoto (name, url)  {
+function makePhotoCards (item)  {
     const photoCardElement = photoCardTemplate.querySelector('.elements-list__element').cloneNode(true)
-    photoCardElement.querySelector('.elements-list__photo').src = url
+    photoCardElement.querySelector('.elements-list__photo').src = item.link
+    photoCardElement.querySelector('.elements-list__photo').alt = item.name
+    photoCardElement.querySelector('.elements-list__title').textContent = item.name
+    photoCardElement.querySelector('.elements-list__basket').addEventListener('click', function (e) {
+        const eventTarget = e.target
+        eventTarget.closest('.elements-list__element').remove()
+    })
+    photoCardElement.querySelector('.elements-list__like').addEventListener('click', function (e) {
+        const eventTarget = e.target
+        eventTarget.classList.toggle('elements-list__like_active')
+    })
+    photoCardElement.querySelector('.elements-list__photo').addEventListener('click', (e)=> {
+        const eventTarget = e.target
+        viewPhotoName.textContent = eventTarget.alt
+        viewURL.src = eventTarget.src
+        openPopUp(popUpView)
+    })
+    return photoCardElement
+}
+
+function  addPhoto(link, name , to_start = false) {
+    const photoCardElement = photoCardTemplate.querySelector('.elements-list__element').cloneNode(true)
+    photoCardElement.querySelector('.elements-list__photo').src = link
     photoCardElement.querySelector('.elements-list__photo').alt = name
     photoCardElement.querySelector('.elements-list__title').textContent = name
     photoCardElement.querySelector('.elements-list__basket').addEventListener('click', function (e) {
@@ -82,10 +104,11 @@ function addPhoto (name, url)  {
         viewURL.src = eventTarget.src
         openPopUp(popUpView)
     })
-    photoCardList.prepend(photoCardElement)
+    if(to_start){
+        photoCardList.prepend(photoCardElement)
+    } else photoCardList.append(photoCardElement)
+
 }
-
-
 initialCards.forEach(function (item){
-    addPhoto(item.name, item.link)
+    photoCardList.prepend(makePhotoCards(item))
 })
