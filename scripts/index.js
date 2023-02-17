@@ -56,7 +56,7 @@ buttonCloseFormPhoto.addEventListener('click', () => {
 
 buttonAddPhoto.addEventListener('click', (evt)=>{
     evt.preventDefault();
-    addPhoto(photoNameInput.value,  photoURLinput.value)
+    addPhoto()
     closeForm(popUpAddForm)
 })
 
@@ -85,11 +85,11 @@ function makePhotoCards (item)  {
     return photoCardElement
 }
 
-function  addPhoto(link, name) {
+function  addPhoto() {
     const photoCardElement = photoCardTemplate.querySelector('.elements-list__element').cloneNode(true)
-    photoCardElement.querySelector('.elements-list__photo').src = link
-    photoCardElement.querySelector('.elements-list__photo').alt = name
-    photoCardElement.querySelector('.elements-list__title').textContent = name
+    photoCardElement.querySelector('.elements-list__photo').src = photoURLinput.value
+    photoCardElement.querySelector('.elements-list__photo').alt = photoNameInput.value
+    photoCardElement.querySelector('.elements-list__title').textContent = photoNameInput.value
     photoCardElement.querySelector('.elements-list__basket').addEventListener('click', function (e) {
         const eventTarget = e.target
         eventTarget.closest('.elements-list__element').remove()
@@ -104,8 +104,7 @@ function  addPhoto(link, name) {
         viewURL.src = eventTarget.src
         openPopUp(popUpView)
     })
-     photoCardList.append(photoCardElement)
-
+    photoCardList.prepend(photoCardElement)
 }
 initialCards.forEach(function (item){
     photoCardList.prepend(makePhotoCards(item))
