@@ -1,0 +1,10 @@
+.pop-up__input-title-error {
+    position: absolute;
+    top: 140px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+
+    color: #FF0000;
+
+}
