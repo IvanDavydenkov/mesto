@@ -1,5 +1,5 @@
 const formValidationConfig = {
-    formSelector: ['.pop-up__edit-form', '.pop-up__add-form'],
+    formSelector: '.pop-up__form',
     inputSelector: '.pop-up__input',
     buttonSelector: '.pop-up__save-button',
     errorClass: 'pop-up__input-error',
@@ -29,8 +29,7 @@ function hideInputErrors(input, config, errorElement) {
 }
 
 function enableValidation(config) {
-    config.formSelector.forEach((item) => {
-        const form = document.querySelector(item)
+    Array.from(document.querySelectorAll(config.formSelector)).forEach((form) => {
         form.addEventListener('submit', disableSubmit)
         form.addEventListener('input', () => {
             toggleButton(form, config)
@@ -60,7 +59,10 @@ function clearValidationErrors(){
         item.textContent = ''
     })
 }
-
+function disableButton(button) {
+    button.disabled = true
+    button.classList.add('button_disabled')
+}
 enableValidation(formValidationConfig)
 
 

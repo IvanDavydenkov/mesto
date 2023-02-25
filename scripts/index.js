@@ -32,20 +32,14 @@ popUpList.forEach((item)=> {
         closeForm(popUp)
     })  
 })
-function closeFormbyESC (evt, item){
-    if(evt.key  === 'Escape'){
-        closeForm(item)
-    }
-}
 
 function openPopUp (item) {
     item.classList.add('pop-up_opened')
     document.addEventListener('keydown', closeFormByESC) 
-    clearValidationErrors()
 }
  function closeFormByESC(evt) {
-        const item = document.querySelector('.pop-up_opened')
-        if (evt.key === 'Escape') {
+     if (evt.key === 'Escape') {
+            const item = document.querySelector('.pop-up_opened')
             closeForm(item)
         }
     }
@@ -62,6 +56,7 @@ function saveProfile(evt) {
 buttonEditForm.addEventListener('click', ()=>{
     profileNameInput.value = profileName.textContent
     profileJobInput.value = profileJob.textContent
+    clearValidationErrors()
     openPopUp(popUpEditForm)
 })
 
@@ -76,16 +71,14 @@ buttonSaveProfile.addEventListener('click', (evt) =>{
 
 buttonAdd.addEventListener('click', ()=> {
     document.querySelector('.pop-up__add-form').reset()
+    clearValidationErrors()
     openPopUp(popUpAddForm)
 })
 
 buttonCloseFormPhoto.addEventListener('click', () => {
     closeForm(popUpAddForm)
 })
-function disableButton(button) {
-    button.disabled = true
-    button.classList.add('button_disabled')
-}
+
 buttonAddPhoto.addEventListener('click', (evt)=>{
     evt.preventDefault();
     disableButton(buttonAddPhoto)
