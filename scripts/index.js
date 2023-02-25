@@ -18,10 +18,9 @@ const buttonCloseFormPhoto = popUpAddForm.querySelector('.pop-up__form-close-but
 const buttonCloseFormViewScreen = popUpView.querySelector('.pop-up__form-close-button-box')
 const buttonSaveProfile  =  popUpEditForm.querySelector('.pop-up__save-button') 
 const buttonAddPhoto = popUpAddForm.querySelector('.pop-up__save-button')
-
- 
 const popUpContainerList  = Array.from(document.querySelectorAll('.pop-up__container'))
 const popUpList = Array.from(document.querySelectorAll('.pop-up'))
+
 popUpContainerList.forEach((item) => {
     item.addEventListener('click', (evt)=>{
     evt.stopPropagation()
@@ -33,15 +32,26 @@ popUpList.forEach((item)=> {
         closeForm(popUp)
     })  
 })
+function closeFormbyESC (evt, item){
+    if(evt.key  === 'Escape'){
+        closeForm(item)
+    }
+}
+
 function openPopUp (item) {
     item.classList.add('pop-up_opened')
-    document.addEventListener('keydown', (evt)=>{
-        if(evt.key  === 'Escape'){
+    document.addEventListener('keydown', closeFormByESC) 
+    clearValidationErrors()
+}
+ function closeFormByESC(evt) {
+        const item = document.querySelector('.pop-up_opened')
+        if (evt.key === 'Escape') {
             closeForm(item)
         }
-    }) 
-}
+    }
+
 function closeForm(item) {
+    document.removeEventListener('keydown', closeFormByESC)  
     item.classList.remove('pop-up_opened')
 }
 function saveProfile(evt) {
@@ -53,7 +63,6 @@ buttonEditForm.addEventListener('click', ()=>{
     profileNameInput.value = profileName.textContent
     profileJobInput.value = profileJob.textContent
     openPopUp(popUpEditForm)
- 
 })
 
 buttonCloseForm.addEventListener('click', () => {
@@ -66,17 +75,20 @@ buttonSaveProfile.addEventListener('click', (evt) =>{
 })
 
 buttonAdd.addEventListener('click', ()=> {
-    photoNameInput.value = ''
-    photoURLinput.value = ''
+    document.querySelector('.pop-up__add-form').reset()
     openPopUp(popUpAddForm)
 })
 
 buttonCloseFormPhoto.addEventListener('click', () => {
     closeForm(popUpAddForm)
 })
-
+function disableButton(button) {
+    button.disabled = true
+    button.classList.add('button_disabled')
+}
 buttonAddPhoto.addEventListener('click', (evt)=>{
     evt.preventDefault();
+    disableButton(buttonAddPhoto)
     addPhoto(photoNameInput.value, photoURLinput.value)
     closeForm(popUpAddForm)
 })
@@ -86,21 +98,27 @@ buttonCloseFormViewScreen.addEventListener('click', ()=>  {
 })
 function makePhotoCards (item)  {
     const photoCardElement = photoCardTemplate.querySelector('.elements-list__element').cloneNode(true)
-    photoCardElement.querySelector('.elements-list__photo').src = item.link
-    photoCardElement.querySelector('.elements-list__photo').alt = item.name
-    photoCardElement.querySelector('.elements-list__title').textContent = item.name
-    photoCardElement.querySelector('.elements-list__basket').addEventListener('click', function (e) {
+    const photo = photoCardElement.querySelector('.elements-list__photo')
+    const photoTitle = photoCardElement.querySelector('.elements-list__title')
+    const photoDeleteButton = photoCardElement.querySelector('.elements-list__basket')
+    const photoLikeButton = photoCardElement.querySelector('.elements-list__like')
+    const photoList  = photoCardElement.querySelector('.elements-list__photo')
+    photo.src = item.link
+    photo.alt = item.name
+    photoTitle.textContent = item.name
+    photoDeleteButton.addEventListener('click', function (e) {
         const eventTarget = e.target
         eventTarget.closest('.elements-list__element').remove()
     })
-    photoCardElement.querySelector('.elements-list__like').addEventListener('click', function (e) {
+    photoLikeButton.addEventListener('click', function (e) {
         const eventTarget = e.target
         eventTarget.classList.toggle('elements-list__like_active')
     })
-    photoCardElement.querySelector('.elements-list__photo').addEventListener('click', (e)=> {
+    photoList.addEventListener('click', (e)=> {
         const eventTarget = e.target
         viewPhotoName.textContent = eventTarget.alt
         viewURL.src = eventTarget.src
+        viewURL.alt  = eventTarget.alt
         openPopUp(popUpView)
     })
     return photoCardElement

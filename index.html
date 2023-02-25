@@ -53,6 +53,7 @@
         class="pop-up__form pop-up__edit-form"
         name="edit-form"
         id="edit-form"
+        
         novalidate
       >
         <input
@@ -63,8 +64,9 @@
           type="text"
           minlength="2"
           maxlength="40"
+          placeholder="Имя"
         />
-        <span id="input-name-error" class="pop-up__input-title-error"></span>
+        <span id="input-name-error" class="pop-up__input-title-error pop-up__input-error"></span>
         <input
           id="input-job"
           class="pop-up__input pop-up__input-subtitle"
@@ -73,8 +75,9 @@
           type="text"
           minlength="2"
           maxlength="200"
+          placeholder="Вид деятельности"
         />
-        <span id="input-job-error" class="pop-up__input-subtitle-error"></span>
+        <span id="input-job-error" class="pop-up__input-subtitle-error pop-up__input-error"></span>
         <button class="pop-up__save-button" id="save-profile-edit-form">Сохранить</button>
       </form>
       <button class="pop-up__form-close-button-box">
@@ -96,7 +99,7 @@
           class="pop-up__input-title pop-up__input"
           placeholder="Название"
           name="photo-location" />
-          <span id="input-space-name-error" class="pop-up__input-title-error"></span>
+          <span id="input-space-name-error" class="pop-up__input-title-error pop-up__input-error"></span>
         <input
           required
           id="input-link"
@@ -104,7 +107,7 @@
           class="pop-up__input-subtitle pop-up__input"
           placeholder="Ссылка на картинку"
           name="photo-link" />
-          <span id="input-link-error" class="pop-up__input-subtitle-error"></span>
+          <span id="input-link-error" class="pop-up__input-subtitle-error pop-up__input-error"></span>
         <button class="pop-up__save-button">Сохранить</button>
       </form>
       <button class="pop-up__form-close-button-box">
@@ -129,8 +132,8 @@
     <p class="footer__copyright">© 2020 Mesto Russia</p>
   </footer>
   <script src="./scripts/cards.js" defer></script>
-  <script src="./scripts/index.js" defer></script>
   <script src="./scripts/validate.js" defer></script>
+  <script src="./scripts/index.js" defer></script>
 </body>
 
 </html>
