@@ -1,6 +1,6 @@
 .pop-up__input-subtitle-error {
     position: absolute;
-    top: 200px;
+    top: 225px;
     font-weight: 400;
     font-size: 12px;
     line-height: 15px;
@@ -8,16 +8,8 @@
     color: #FF0000;
 }
 
-/* .pop-up__input-error::after {
-    content: 'error';
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 15px;
-
-    color: #FF0000;
-    border-color: #FF0000;
-} */
-
-.pop-up__input-error {
-    border-color: #FF0000;
+@media screen and (max-width: 650px) {
+    .pop-up__input-subtitle-error  {
+        top: 230px;
+    }
 }

@@ -18,8 +18,28 @@ const buttonCloseFormPhoto = popUpAddForm.querySelector('.pop-up__form-close-but
 const buttonCloseFormViewScreen = popUpView.querySelector('.pop-up__form-close-button-box')
 const buttonSaveProfile  =  popUpEditForm.querySelector('.pop-up__save-button') 
 const buttonAddPhoto = popUpAddForm.querySelector('.pop-up__save-button')
+
+ 
+const popUpContainerList  = Array.from(document.querySelectorAll('.pop-up__container'))
+const popUpList = Array.from(document.querySelectorAll('.pop-up'))
+popUpContainerList.forEach((item) => {
+    item.addEventListener('click', (evt)=>{
+    evt.stopPropagation()
+    })
+})
+popUpList.forEach((item)=> {
+    item.addEventListener('click', (evt)=>  {
+        const popUp = evt.target
+        closeForm(popUp)
+    })  
+})
 function openPopUp (item) {
-    item.classList.add('pop-up_opened') 
+    item.classList.add('pop-up_opened')
+    document.addEventListener('keydown', (evt)=>{
+        if(evt.key  === 'Escape'){
+            closeForm(item)
+        }
+    }) 
 }
 function closeForm(item) {
     item.classList.remove('pop-up_opened')
@@ -33,6 +53,7 @@ buttonEditForm.addEventListener('click', ()=>{
     profileNameInput.value = profileName.textContent
     profileJobInput.value = profileJob.textContent
     openPopUp(popUpEditForm)
+ 
 })
 
 buttonCloseForm.addEventListener('click', () => {

@@ -3,7 +3,14 @@ const formValidationConfig = {
     inputSelector : '.pop-up__input',
     buttonSelector: '.pop-up__save-button',
     errorClass: 'pop-up__input-error',
-    buttonDisabled: 'disabled'
+    buttonDisabled: 'button_disabled'
+}
+const formAddConfig = {
+    formSelector : '.pop-up__add-form',
+    inputSelector : '.pop-up__input',
+    buttonSelector: '.pop-up__save-button',
+    errorClass: 'pop-up__input-error',
+    buttonDisabled: 'button_disabled'
 }
 function disableSubmit (evt) {
     evt.preventDefault()
@@ -45,4 +52,9 @@ function toggleButton(form, config){
     buttonSubmit.disabled = !isFormValid
     buttonSubmit.classList.toggle(config.buttonDisabled, !isFormValid)
 }
+
+
 enableValidation(formValidationConfig)
+enableValidation(formAddConfig)
+
+

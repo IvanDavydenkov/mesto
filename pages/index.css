@@ -45,4 +45,4 @@
 @import url(../blocks/pop-up/_dark/pop-up_dark.css);
 @import url(../blocks/pop-up/__input-subtitle-error/pop-up__input-subtitle-error.css);
 @import url(../blocks/pop-up/__input-title-error/pop-up__input-title-error.css);
-@import url(../blocks/disabled/disabled.css);
+@import url(../blocks/button/_disabled/button_disabled.css);

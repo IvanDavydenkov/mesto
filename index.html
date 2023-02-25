@@ -86,9 +86,25 @@
   <div class="pop-up" id="add-form">
     <div class="pop-up__container">
       <h2 class="pop-up__title">Новое место</h2>
-      <form action="#" class="pop-up__form" name="edit-form" >
-        <input type="text" class="pop-up__input-title" placeholder="Название" name="photo-location" />
-        <input type="text" class="pop-up__input-subtitle" placeholder="Ссылка на картинку" name="photo-link" />
+      <form action="#" class="pop-up__form pop-up__add-form" name="edit-form" novalidate>
+       <input
+          required
+          id="input-space-name"
+          type="text"
+          minlength="2"
+          maxlength="30"
+          class="pop-up__input-title pop-up__input"
+          placeholder="Название"
+          name="photo-location" />
+          <span id="input-space-name-error" class="pop-up__input-title-error"></span>
+        <input
+          required
+          id="input-link"
+          type="url"
+          class="pop-up__input-subtitle pop-up__input"
+          placeholder="Ссылка на картинку"
+          name="photo-link" />
+          <span id="input-link-error" class="pop-up__input-subtitle-error"></span>
         <button class="pop-up__save-button">Сохранить</button>
       </form>
       <button class="pop-up__form-close-button-box">
