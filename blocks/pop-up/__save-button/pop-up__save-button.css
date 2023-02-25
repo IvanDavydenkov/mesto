@@ -6,10 +6,9 @@
   font-size: 18px;
   line-height: 22px;
   text-align: center;
-  transition: all 0.1s ease-in-out;
+  transition: all 0.3s ease-in-out;
   border: none;
   margin-top: 48px;
-  transition: background-color .3s  ease-in-out;
 }
 
 .pop-up__save-button:hover {
